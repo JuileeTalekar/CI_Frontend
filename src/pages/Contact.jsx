@@ -39,7 +39,7 @@ export const Contact = () => {
     console.log(contact);
 
      try {
-      const response = await fetch("http://localhost:5000/api/form/contact", {
+      const response = await fetch("http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/form/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -9,7 +9,7 @@ const AdminContacts = () => {
 
     const getContactsData = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/admin/contacts", {
+            const response = await fetch("http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/admin/contacts", {
                 method: "GET",
                 headers: {
                     Authorization: AuthorizationToken,
@@ -26,7 +26,7 @@ const AdminContacts = () => {
 
     const deleteContactById = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/api/admin/contacts/delete/${id}`, {
+            const response = await fetch(`http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/admin/contacts/delete/${id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: AuthorizationToken,

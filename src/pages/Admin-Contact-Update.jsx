@@ -16,7 +16,7 @@ export const AdminContactUpdate = () => {
   const getSingleContactData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/admin/contacts/${params.id}`,
+        `http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/admin/contacts/${params.id}`,
         {
           method: "GET",
           headers: {
@@ -49,7 +49,7 @@ export const AdminContactUpdate = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:5000/api/admin/contacts/update/${params.id}`,
+        `http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/admin/contacts/update/${params.id}`,
         {
           method: "PATCH",
           headers: {

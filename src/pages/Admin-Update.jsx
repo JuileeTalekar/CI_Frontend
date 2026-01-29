@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"; 
 import { useAuth } from "../store/Auth";
 // import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 
 export const AdminUpdate = () => {
@@ -18,7 +19,7 @@ export const AdminUpdate = () => {
     // Fetch Single User Data
     const getSingleUserData = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/admin/users/${params.id}`, {
+            const response = await fetch(`http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/admin/users/${params.id}`, {
                 method: "GET",
                 headers: {
                     Authorization: AuthorizationToken,
@@ -52,7 +53,7 @@ export const AdminUpdate = () => {
         e.preventDefault();
         
         try {
-             const response = await fetch(`http://localhost:5000/api/admin/users/update/${params.id}`, {
+             const response = await fetch(`http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/admin/users/update/${params.id}`, {
                 method: "PATCH", 
                 headers: {
                     "Content-Type": "application/json",

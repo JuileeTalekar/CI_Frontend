@@ -36,7 +36,7 @@ const userAuthentication = async () => {
     return;
   }
   try {
-    const response = await fetch("http://localhost:5000/api/auth/user", {
+    const response = await fetch("http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/auth/user", {
       method: "GET",
       headers: {
         Authorization: AuthorizationToken,
@@ -57,7 +57,7 @@ const userAuthentication = async () => {
 
 const getService = async () => {
   try {
-    const response = await fetch("http://localhost:5000/api/data/service", {
+    const response = await fetch("http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/data/service", {
       method: "GET",
     });
 

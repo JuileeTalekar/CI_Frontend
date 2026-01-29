@@ -31,7 +31,7 @@
     console.log(user);
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch("http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

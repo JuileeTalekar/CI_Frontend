@@ -8,7 +8,7 @@ const AdminUsers = () => {
 
   const getAllUsersData = async () => {
     try {
-      const responce = await fetch("http://localhost:5000/api/admin/users", {
+      const responce = await fetch("http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/admin/users", {
         method: "GET",
         headers: {
           Authorization: AuthorizationToken,
@@ -25,7 +25,7 @@ const AdminUsers = () => {
   const deleteUser = async(id) => {
     try{
     console.log("Delete user:", id);
-    const responce = await fetch(`http://localhost:5000/api/admin/users/delete/${id}`, {
+    const responce = await fetch(`http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/admin/users/delete/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: AuthorizationToken,
