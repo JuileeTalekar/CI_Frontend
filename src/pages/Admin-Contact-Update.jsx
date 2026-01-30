@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../store/Auth";
+const API = import.meta.env.VITE_API_URL;
 
 export const AdminContactUpdate = () => {
   const [data, setData] = useState({
@@ -16,7 +17,7 @@ export const AdminContactUpdate = () => {
   const getSingleContactData = async () => {
     try {
       const response = await fetch(
-        `http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/admin/contacts/${params.id}`,
+        `${API}/api/admin/contacts/${params.id}`,
         {
           method: "GET",
           headers: {
@@ -49,7 +50,7 @@ export const AdminContactUpdate = () => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/admin/contacts/update/${params.id}`,
+        `${API}/api/admin/contacts/update/${params.id}`,
         {
           method: "PATCH",
           headers: {

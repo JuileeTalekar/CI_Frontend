@@ -1,5 +1,5 @@
-import { Outlet } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import { Outlet, NavLink } from 'react-router-dom';
+
 import { FaUser } from "react-icons/fa";
 import { IoIosContact } from "react-icons/io";
 import { FcServices } from "react-icons/fc";

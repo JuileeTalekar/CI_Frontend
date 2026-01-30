@@ -1,5 +1,6 @@
 import { createContext, useContext , useState} from "react";
 import { useEffect } from "react";
+const API = import.meta.env.VITE_API_URL;
 
 // create context
 export const AuthContext = createContext();
@@ -36,7 +37,7 @@ const userAuthentication = async () => {
     return;
   }
   try {
-    const response = await fetch("http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/auth/user", {
+    const response = await fetch(`${API}/api/auth/user`, {
       method: "GET",
       headers: {
         Authorization: AuthorizationToken,
@@ -57,7 +58,7 @@ const userAuthentication = async () => {
 
 const getService = async () => {
   try {
-    const response = await fetch("http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/data/service", {
+    const response = await fetch(`${API}/api/data/service`, {
       method: "GET",
     });
 

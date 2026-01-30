@@ -2,6 +2,8 @@
   // import {useNavigate} from 'react-router-dom';
   import { useAuth } from "../store/Auth.jsx";
   import { toast } from "react-toastify";
+  const API = import.meta.env.VITE_API_URL;
+
  export const Register = () => {
    
     const [user, setUser] = useState({
@@ -31,7 +33,7 @@
     console.log(user);
 
     try {
-      const response = await fetch("http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/auth/register", {
+      const response = await fetch(`${API}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -3,6 +3,8 @@
   import {useNavigate} from 'react-router-dom';
   import { useAuth } from "../store/Auth.jsx";
   import { toast } from "react-toastify";
+  const API = import.meta.env.VITE_API_URL;
+
  export const Login = () => {
    
     const [user, setUser] = useState({
@@ -30,7 +32,7 @@
     e.preventDefault();
     console.log(user);
     try {
-      const response = await fetch("http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/auth/login", {
+      const response = await fetch(`${API}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../store/Auth";
+const API = import.meta.env.VITE_API_URL;
 
 export const Contact = () => {
 
@@ -39,7 +40,7 @@ export const Contact = () => {
     console.log(contact);
 
      try {
-      const response = await fetch("http://ec2-34-228-6-237.compute-1.amazonaws.com:5000/api/form/contact", {
+      const response = await fetch(`${API}/api/form/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

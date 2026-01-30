@@ -18,12 +18,24 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
+
+     - name: Backup frontend .env
+    run: |
+        if [ -f .env ]; then mv .env /home/ubuntu/.env_frontend_backup; fi
+        - uses: actions/checkout@v4
+        
+        - name: Restore frontend .env
+    run: |
+        if [ -f /home/ubuntu/.env_frontend_backup ]; then mv /home/ubuntu/.env_frontend_backup .env; fi
+    
+        - uses: actions/checkout@v4
+        - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm run build
+        - run: npm ci
+        - run: npm run build
+        - name: Restart nginx
+        run: sudo systemctl restart nginx
+
