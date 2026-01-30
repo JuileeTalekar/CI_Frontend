@@ -1,4 +1,7 @@
-name: Frontend CI/CD
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
 
 on:
   push:
@@ -6,26 +9,30 @@ on:
 
 jobs:
   build:
+
     runs-on: self-hosted
 
-    env:
-      VITE_API_URL: http://ec2-34-228-6-237.compute-1.amazonaws.com:5000
+    strategy:
+      matrix:
+        node-version: [22.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
+    - name: Backup frontend .env
+      run: |
+        if [ -f .env ]; then mv .env /home/ubuntu/.env_frontend_backup; fi
 
-      - name: Install dependencies
-        run: npm ci
+    - uses: actions/checkout@v4
 
-      - name: Build frontend
-        run: npm run build
+    - name: Restore frontend .env
+      run: |
+        if [ -f /home/ubuntu/.env_frontend_backup ]; then mv /home/ubuntu/.env_frontend_backup .env; fi
 
-      - name: Restart nginx
-        run: sudo systemctl restart nginx
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build --if-present
